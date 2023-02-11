@@ -1,0 +1,13 @@
+.cronometro{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.tiempo{
+    display: flex;
+    font-size: 3em;
+}
