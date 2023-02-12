@@ -4,6 +4,7 @@ let milisegundo = "0";
 
 let cronometro;
 let playPause = true;
+let vueltas = 1;
 
 const mSegundo=document.querySelector(".milisegundo");
 const seg=document.querySelector(".segundo");
@@ -12,20 +13,24 @@ const min=document.querySelector(".minuto");
 const btnReiniciar = document.querySelector(".reiniciar");
 const btnIniciar = document.querySelector(".iniciar");
 const btnVueltas = document.querySelector(".vueltas");
+const marcaDeTiempo = document.querySelector(".marca-de-tiempo");
 
 btnVueltas.disabled = true;
 btnReiniciar.disabled = true;
 
-const iniciar=()=>{
+const alternarPlayPause=(clase,btnAgain,btnVuel,plPa)=>{
+    btnIniciar.firstElementChild.classList.replace(clase[0],clase[1]);
+    btnReiniciar.disabled = btnAgain;
+    btnVueltas.disabled = btnVuel;
+    playPause = plPa;
+}
+const iniciarPausar=()=>{
     if(playPause){
-        btnIniciar.textContent = "pausar";
-        btnReiniciar.disabled = true;
-        btnVueltas.disabled = false;
-        playPause = false;
+        alternarPlayPause(["fa-play","fa-pause"],true,false,false);
         cronometro = setInterval(() => {
             mSegundo.textContent = milisegundo;
             if (milisegundo == 10){
-                milisegundo = 0;
+                milisegundo = "0";
                 mSegundo.textContent=milisegundo;
                 segundo++;
                 if (segundo<10){
@@ -41,14 +46,11 @@ const iniciar=()=>{
                 seg.textContent = segundo;   
                 min.textContent = minuto;
             }
-            milisegundo++; 
+            milisegundo++;
         }, 100);
     }else{
         clearInterval(cronometro);
-        btnIniciar.textContent = "iniciar";
-        btnVueltas.disabled = true;
-        btnReiniciar.disabled = false;
-        playPause = true;
+        alternarPlayPause(["fa-pause","fa-play"],false,true,true);
     }
 }
 const reiniciar=()=>{
@@ -56,11 +58,29 @@ const reiniciar=()=>{
     minuto = "00";
     segundo = "00";
     milisegundo = "00";
+    vueltas = 1;
+    marcaDeTiempo.innerHTML = ``;
     mSegundo.textContent = milisegundo;
     seg.textContent = segundo;   
     min.textContent = minuto;
     clearInterval(cronometro);
 }
+const showTime=()=>{
+    const dataContainer = document.createElement("div");
+    dataContainer.classList.add("data-time");
+    const numVueltas = document.createElement("div");
+    const timepoMarcado = document.createElement("div");
+    if(milisegundo == 10){
+        milisegundo = "0"
+    }
+    numVueltas.innerHTML = `vuelta ${vueltas} <br>(tiempo transcurrido)`;
+    timepoMarcado.textContent = `${minuto} : ${segundo} : ${milisegundo}`;
+    dataContainer.appendChild(numVueltas);
+    dataContainer.appendChild(timepoMarcado);
+    vueltas++;
+    marcaDeTiempo.appendChild(dataContainer);
+}
 
-btnIniciar.addEventListener("click",iniciar);
+btnIniciar.addEventListener("click",iniciarPausar);
 btnReiniciar.addEventListener("click",reiniciar);
+btnVueltas.addEventListener("click",showTime);
