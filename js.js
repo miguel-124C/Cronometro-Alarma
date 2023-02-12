@@ -57,7 +57,7 @@ const reiniciar=()=>{
     btnReiniciar.disabled = true;
     minuto = "00";
     segundo = "00";
-    milisegundo = "00";
+    milisegundo = "0";
     vueltas = 1;
     marcaDeTiempo.innerHTML = ``;
     mSegundo.textContent = milisegundo;
