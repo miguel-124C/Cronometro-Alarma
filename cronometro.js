@@ -1,7 +1,7 @@
 /*Objetos Cronometro*/
 const mSegundo=document.querySelector(".milisegundo");
 const seg=document.querySelector(".segundo");
-const min=document.querySelector(".minuto");
+const min=document.querySelector(".cronometro-minuto");
 
 const btnCronometro = document.querySelector(".section__cronometro");
 const btnTemporizador = document.querySelector('.section__temporizador');
@@ -12,7 +12,7 @@ const btnIniciar = document.querySelector(".iniciar");
 const btnVueltas = document.querySelector(".vueltas");
 const marcaDeTiempo = document.querySelector(".marca-de-tiempo");
 /*Cronometro funcinoes*/
-let minuto = "00";
+let cronometroMinuto = "00";
 let segundo = "00";
 let milisegundo = "0";
 
@@ -42,13 +42,13 @@ const iniciarPausar=()=>{
                 } 
                 if (segundo == 60) {
                     segundo = "00";
-                    minuto++;
-                    if (minuto<10){
-                        minuto = '0'+minuto;
+                    cronometroMinuto++;
+                    if (cronometroMinuto<10){
+                        cronometroMinuto = '0'+cronometroMinuto;
                     } 
                 }
                 seg.textContent = segundo;   
-                min.textContent = minuto;
+                min.textContent = cronometroMinuto;
             }
             milisegundo++;
         }, 100);
@@ -59,14 +59,14 @@ const iniciarPausar=()=>{
 }
 const reiniciar=()=>{
     btnReiniciar.disabled = true;
-    minuto = "00";
+    cronometroMinuto = "00";
     segundo = "00";
     milisegundo = "0";
     vueltas = 1;
     marcaDeTiempo.innerHTML = ``;
     mSegundo.textContent = milisegundo;
     seg.textContent = segundo;   
-    min.textContent = minuto;
+    min.textContent = cronometroMinuto;
     clearInterval(cronometro);
 }
 const showTime=()=>{
@@ -78,7 +78,7 @@ const showTime=()=>{
         milisegundo = "0"
     }
     numVueltas.innerHTML = `vuelta ${vueltas} <br>(tiempo transcurrido)`;
-    timepoMarcado.textContent = `${minuto} : ${segundo} : ${milisegundo}`;
+    timepoMarcado.textContent = `${cronometroMinuto} : ${segundo} : ${milisegundo}`;
     dataContainer.appendChild(numVueltas);
     dataContainer.appendChild(timepoMarcado);
     vueltas++;
