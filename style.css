@@ -3,18 +3,44 @@
 }
 *{
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
+    list-style: none;
     outline: none;
     font-family:monospace;
+    text-decoration: none;
 }
-.cronometro{
+body{
+   overflow: hidden;
+}
+/*Cronometro*/
+#cronometro,#temporizador,#reloj{            /*Style para los 3*/
     display: flex;
     flex-direction: column;
     gap: 50px;
     height: 100vh;
-    width: 100vw;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+}
+.aside{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+}
+.aside__ul{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 2.5em;
+}
+.aside__ul li {
+    cursor: pointer;
+    color: black;
+}
+.section__select{
+    border-bottom: 2px solid var(--color-principal);
 }
 
 .tiempo{
@@ -33,7 +59,7 @@
     gap: 20px;
     flex-direction: column;
     align-items: center;
-    height: 40%;
+    height: 30%;
     width: 100%;
 }
 .marca-de-tiempo::-webkit-scrollbar{
@@ -65,3 +91,22 @@
 i{
     color: var(--color-principal);
 }
+
+#temporizador,#reloj{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Temporizador*/
+
+.hora,.min,.seg{
+    width: 25%;
+    height: 20%;
+    font-size: 1em;
+    text-align: center;
+    border: none;
+}
+
+/*Reloj*/

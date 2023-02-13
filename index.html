@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://kit.fontawesome.com/1852c762de.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronometro</title>
+</head>
+<body>
+    <aside class="aside">
+        <ul class="aside__ul">
+            <a href="#cronometro">
+                <li class="section__cronometro section__select">cronometro</li>
+            </a>
+            <a href="#temporizador">
+                <li class="section__temporizador">temporizador</li>
+            </a>
+            <a href="#reloj">
+                <li class="section__reloj">reloj</li>
+            </a>
+        </ul>
+    </aside>
+    <div id="cronometro">
+        <div class="tiempo">
+            <div class="minuto">00</div>
+            &#58;
+            <div class="segundo">00</div>
+            .
+            <div class="milisegundo">0</div>
+        </div>
+        <div class="marca-de-tiempo">
+
+        </div>
+        <div class="buttons">
+            <button class="reiniciar"><i class="fa-solid fa-rotate-left"></i></button>
+            <button class="iniciar"><i class="fa-solid fa-play"></i></button>
+            <button class="vueltas"><i class="fa-solid fa-clock"></i></button>
+        </div>
+    </div>
+    <div id="temporizador">
+        <div class="tiempo">
+            <input type="number" class="hora" value="00"></input>
+            &#58;
+            <input type="number" class="min" value="00"></input>
+            &#58;
+            <input type="number" class="seg" value="00"></input>
+        </div>
+        <div class="buttons">
+            <button class="reiniciar" disabled><i class="fa-solid fa-rotate-left"></i></button>
+            <button class="iniciar" disabled><i class="fa-solid fa-play"></i></button>
+        </div>
+    </div>
+    <div id="reloj">
+        <div class="tiempo">
+            <input type="number" class="hora" value="00"></input>
+            &#58;
+            <input type="number" class="min" value="00"></input>
+            &#58;
+            <input type="number" class="seg" value="00"></input>
+        </div>
+    </div>
+    <script src="cronometro.js"></script>
+    <script src="temporizador.js"></script>
+    <script src="reloj.js"></script>
+</body>
+</html>
