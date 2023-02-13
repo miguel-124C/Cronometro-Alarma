@@ -1,3 +1,17 @@
+/*Objetos Cronometro*/
+const mSegundo=document.querySelector(".milisegundo");
+const seg=document.querySelector(".segundo");
+const min=document.querySelector(".minuto");
+
+const btnCronometro = document.querySelector(".section__cronometro");
+const btnTemporizador = document.querySelector('.section__temporizador');
+const btnReloj = document.querySelector(".section__reloj");
+
+const btnReiniciar = document.querySelector(".reiniciar");
+const btnIniciar = document.querySelector(".iniciar");
+const btnVueltas = document.querySelector(".vueltas");
+const marcaDeTiempo = document.querySelector(".marca-de-tiempo");
+/*Cronometro funcinoes*/
 let minuto = "00";
 let segundo = "00";
 let milisegundo = "0";
@@ -5,16 +19,6 @@ let milisegundo = "0";
 let cronometro;
 let playPause = true;
 let vueltas = 1;
-
-const mSegundo=document.querySelector(".milisegundo");
-const seg=document.querySelector(".segundo");
-const min=document.querySelector(".minuto");
-
-const btnReiniciar = document.querySelector(".reiniciar");
-const btnIniciar = document.querySelector(".iniciar");
-const btnVueltas = document.querySelector(".vueltas");
-const marcaDeTiempo = document.querySelector(".marca-de-tiempo");
-
 btnVueltas.disabled = true;
 btnReiniciar.disabled = true;
 
@@ -81,6 +85,24 @@ const showTime=()=>{
     marcaDeTiempo.appendChild(dataContainer);
 }
 
+/*--------------------------------------------------------------------------------------------------------*/
+/*Cronometro Eventos*/
 btnIniciar.addEventListener("click",iniciarPausar);
 btnReiniciar.addEventListener("click",reiniciar);
 btnVueltas.addEventListener("click",showTime);
+
+btnCronometro.addEventListener("click",()=>{
+    btnCronometro.classList.add("section__select");
+    btnTemporizador.classList.remove("section__select");
+    btnReloj.classList.remove("section__select");
+});
+btnTemporizador.addEventListener("click",()=>{
+    btnCronometro.classList.remove("section__select");
+    btnTemporizador.classList.add("section__select");
+    btnReloj.classList.remove("section__select");
+});
+btnReloj.addEventListener("click",()=>{
+    btnCronometro.classList.remove("section__select");
+    btnTemporizador.classList.remove("section__select");
+    btnReloj.classList.add("section__select");
+});
