@@ -29,7 +29,7 @@ const getTimeADisminuir=()=>{
 const disminuir = (tiempoADisminuir,tiempoFinal)=>{
     let limite = 0;
     intervaloSegundo = setInterval(() => {
-        if(limite <= tiempoFinal){
+        if(limite < tiempoFinal){
             if(tiempoADisminuir[2] < 10){
                 temporizadorSegundo.textContent = "0" + tiempoADisminuir[2];
             }else{
