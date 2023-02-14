@@ -11,9 +11,10 @@ const btnPLayTemporizador = document.querySelector(".temporizador-iniciar");
 const btnRefreshTemporizador = document.querySelector(".temporizador-reiniciar");
 /*temporizador funciones*/
 let iniciaroNo = true;
+let limite = 0;
 let intervaloSegundo;
-let intervaloMinuto;
-let intervaloHora;
+let horaMostrada, minutoMostrado, segundoMostrado;
+let limiteFinal;
 
 const soloNumbers=(input,rango,number)=>{
     let numeroAct = input.value + "" + number;
@@ -23,29 +24,29 @@ const soloNumbers=(input,rango,number)=>{
         }
     }
 }
-const getTimeADisminuir=()=>{
-    return [inputHora.value,inputMinuto.value,inputSegundo.value];
+const mostrarTiempo = (tiempo,objMostrar)=>{
+    if(tiempo < 10){
+        objMostrar.textContent = "0" + tiempo;
+    }else{
+        objMostrar.textContent = tiempo;
+    }
 }
-const disminuir = (tiempoADisminuir,tiempoFinal)=>{
-    let limite = 0;
+const disminuir = (limiteFinal)=>{
     intervaloSegundo = setInterval(() => {
-        if(limite < tiempoFinal){
-            if(tiempoADisminuir[2] < 10){
-                temporizadorSegundo.textContent = "0" + tiempoADisminuir[2];
-            }else{
-                temporizadorSegundo.textContent = tiempoADisminuir[2];
+        if(limite < limiteFinal){
+            segundoMostrado--;
+            if(segundoMostrado == -1){
+                segundoMostrado = 59;
+                minutoMostrado--;
+                mostrarTiempo(minutoMostrado,temporizadorMinuto);
             }
-            tiempoADisminuir[2]--;
-            if(tiempoADisminuir[2] == -1){
-                tiempoADisminuir[2] = 59;
-            }
+            mostrarTiempo(segundoMostrado,temporizadorSegundo);
             limite++;
         }
     }, 1000);
 }
 const convertir=(hora,minuto,segundo)=>{
     return r = (hora*3600) + (minuto*60) + (segundo*1);
-
 }
 
 const altPlayPause=(clase,btnAgain,plPa)=>{
@@ -53,17 +54,40 @@ const altPlayPause=(clase,btnAgain,plPa)=>{
     btnRefreshTemporizador.disabled = btnAgain;
     iniciaroNo = plPa;
 }
+const setTiempo=()=>{
+    if(inputHora.disabled == false && inputMinuto.disabled == false && inputSegundo.disabled == false){
+        horaMostrada = inputHora.value;
+        minutoMostrado = inputMinuto.value;
+        segundoMostrado = inputSegundo.value;
+        limiteFinal = convertir(inputHora.value,inputMinuto.value,inputSegundo.value);
+        mostrarTiempo(horaMostrada,temporizadorHora);
+        mostrarTiempo(minutoMostrado,temporizadorMinuto);
+        mostrarTiempo(segundoMostrado,temporizadorSegundo);
+    }
+}
 const iniciarDescuento=()=>{
-    let tiempoADisminuir = getTimeADisminuir();
         if(iniciaroNo){
-            let tiempoFinal = convertir(tiempoADisminuir[0],tiempoADisminuir[1],tiempoADisminuir[2]);
-            altPlayPause(["fa-play","fa-pause"],false,false);
-            disminuir(tiempoADisminuir,tiempoFinal);
+            setTiempo();
+            inputHora.disabled = true;
+            inputMinuto.disabled =true;
+            inputSegundo.disabled = true;
+            altPlayPause(["fa-play","fa-pause"],true,false);
+            disminuir(limiteFinal);
         }else{
-            altPlayPause(["fa-pause","fa-play"],true, true);  
+            altPlayPause(["fa-pause","fa-play"],false, true);  
+            clearInterval(intervaloSegundo);
         }
 }
-
+const reiniciarTemporizador=()=>{
+    btnRefreshTemporizador.disabled = true;
+    inputHora.disabled = false;
+    inputMinuto.disabled =  false;
+    inputSegundo.disabled = false;
+    temporizadorHora.textContent = "00";
+    temporizadorMinuto.textContent = "00";
+    temporizadorSegundo.textContent = "00";
+    limite = 0;
+}
 /*Eventos*/
 inputHora.addEventListener("keypress",(e)=>{
     e.preventDefault();
@@ -79,3 +103,4 @@ inputSegundo.addEventListener("keypress",(e)=>{
 });
 
 btnPLayTemporizador.addEventListener("click",iniciarDescuento);
+btnRefreshTemporizador.addEventListener("click",reiniciarTemporizador);

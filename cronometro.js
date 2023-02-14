@@ -3,10 +3,6 @@ const mSegundo=document.querySelector(".cronometro-milisegundo");
 const seg=document.querySelector(".cronometro-segundo");
 const min=document.querySelector(".cronometro-minuto");
 
-const btnCronometro = document.querySelector(".section__cronometro");
-const btnTemporizador = document.querySelector('.section__temporizador');
-const btnReloj = document.querySelector(".section__reloj");
-
 const btnReiniciar = document.querySelector(".cronometro-reiniciar");
 const btnIniciar = document.querySelector(".cronometro-iniciar");
 const btnVueltas = document.querySelector(".cronometro-vueltas");
@@ -90,19 +86,3 @@ const showTime=()=>{
 btnIniciar.addEventListener("click",cronometroIniciarPausar);
 btnReiniciar.addEventListener("click",reiniciar);
 btnVueltas.addEventListener("click",showTime);
-
-btnCronometro.addEventListener("click",()=>{
-    btnCronometro.classList.add("section__select");
-    btnTemporizador.classList.remove("section__select");
-    btnReloj.classList.remove("section__select");
-});
-btnTemporizador.addEventListener("click",()=>{
-    btnCronometro.classList.remove("section__select");
-    btnTemporizador.classList.add("section__select");
-    btnReloj.classList.remove("section__select");
-});
-btnReloj.addEventListener("click",()=>{
-    btnCronometro.classList.remove("section__select");
-    btnTemporizador.classList.remove("section__select");
-    btnReloj.classList.add("section__select");
-});

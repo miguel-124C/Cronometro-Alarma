@@ -11,4 +11,4 @@ const clock = setInterval(()=>{
         hours.textContent = reloj.toLocaleTimeString().split(":")[i];
         i++;
     }
-},100);
+},50);
