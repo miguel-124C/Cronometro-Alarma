@@ -92,21 +92,18 @@ i{
     color: var(--color-principal);
 }
 
-#temporizador,#reloj{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 /*Temporizador*/
-
-.hora,.min,.seg{
-    width: 25%;
-    height: 20%;
-    font-size: 1em;
-    text-align: center;
-    border: none;
+.tempTime{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 80px;
+    position: relative;
+}
+.time-disminuir{
+    font-size: 2em;
+    width: 10%;
 }
 
 /*Reloj*/

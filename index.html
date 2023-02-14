@@ -26,39 +26,44 @@
         <div class="tiempo">
             <div class="cronometro-minuto">00</div>
             &#58;
-            <div class="segundo">00</div>
+            <div class="cronometro-segundo">00</div>
             .
-            <div class="milisegundo">0</div>
+            <div class="cronometro-milisegundo">0</div>
         </div>
         <div class="marca-de-tiempo">
 
         </div>
         <div class="buttons">
-            <button class="reiniciar"><i class="fa-solid fa-rotate-left"></i></button>
-            <button class="iniciar"><i class="fa-solid fa-play"></i></button>
-            <button class="vueltas"><i class="fa-solid fa-clock"></i></button>
+            <button class="reiniciar cronometro-reiniciar"><i class="fa-solid fa-rotate-left"></i></button>
+            <button class="iniciar cronometro-iniciar"><i class="fa-solid fa-play"></i></button>
+            <button class="vueltas cronometro-vueltas"><i class="fa-solid fa-clock"></i></button>
         </div>
     </div>
     <div id="temporizador">
-        <div class="tiempo">
-            <input type="number" class="hora" value="00"></input>
+        <div class="tiempo" id="tiempo-temporizador">
+            <div class="temporizador-hora">00</div>
             &#58;
-            <input type="number" class="min" value="00"></input>
+            <div class="temporizador-minuto">00</div>
             &#58;
-            <input type="number" class="seg" value="00"></input>
+            <div class="temporizador-segundo">00</div>
+        </div>
+        <div class="marca-de-tiempo tempTime">
+            <input class="time-disminuir disminuir-hora" placeholder="00"></input>
+            <input class="time-disminuir disminuir-minuto" placeholder="00"></input>
+            <input class="time-disminuir disminuir-segundo" placeholder="00"></input>
         </div>
         <div class="buttons">
-            <button class="reiniciar" disabled><i class="fa-solid fa-rotate-left"></i></button>
-            <button class="iniciar" disabled><i class="fa-solid fa-play"></i></button>
+            <button class="reiniciar temporizador-reiniciar" disabled><i class="fa-solid fa-rotate-left"></i></button>
+            <button class="iniciar temporizador-iniciar"><i class="fa-solid fa-play"></i></button>
         </div>
     </div>
     <div id="reloj">
-        <div class="tiempo">
-            <input type="number" class="hora" value="00"></input>
+        <div class="tiempo" id="tiempo-reloj">
+            <div class="reloj-hora"></div>
             &#58;
-            <input type="number" class="min" value="00"></input>
+            <div class="reloj-minuto"></div>
             &#58;
-            <input type="number" class="seg" value="00"></input>
+            <div class="reloj-segundo"></div>
         </div>
     </div>
     <script src="cronometro.js"></script>

@@ -1,15 +1,15 @@
 /*Objetos Cronometro*/
-const mSegundo=document.querySelector(".milisegundo");
-const seg=document.querySelector(".segundo");
+const mSegundo=document.querySelector(".cronometro-milisegundo");
+const seg=document.querySelector(".cronometro-segundo");
 const min=document.querySelector(".cronometro-minuto");
 
 const btnCronometro = document.querySelector(".section__cronometro");
 const btnTemporizador = document.querySelector('.section__temporizador');
 const btnReloj = document.querySelector(".section__reloj");
 
-const btnReiniciar = document.querySelector(".reiniciar");
-const btnIniciar = document.querySelector(".iniciar");
-const btnVueltas = document.querySelector(".vueltas");
+const btnReiniciar = document.querySelector(".cronometro-reiniciar");
+const btnIniciar = document.querySelector(".cronometro-iniciar");
+const btnVueltas = document.querySelector(".cronometro-vueltas");
 const marcaDeTiempo = document.querySelector(".marca-de-tiempo");
 /*Cronometro funcinoes*/
 let cronometroMinuto = "00";
@@ -28,7 +28,7 @@ const alternarPlayPause=(clase,btnAgain,btnVuel,plPa)=>{
     btnVueltas.disabled = btnVuel;
     playPause = plPa;
 }
-const iniciarPausar=()=>{
+const cronometroIniciarPausar=()=>{
     if(playPause){
         alternarPlayPause(["fa-play","fa-pause"],true,false,false);
         cronometro = setInterval(() => {
@@ -87,7 +87,7 @@ const showTime=()=>{
 
 /*--------------------------------------------------------------------------------------------------------*/
 /*Cronometro Eventos*/
-btnIniciar.addEventListener("click",iniciarPausar);
+btnIniciar.addEventListener("click",cronometroIniciarPausar);
 btnReiniciar.addEventListener("click",reiniciar);
 btnVueltas.addEventListener("click",showTime);
 
