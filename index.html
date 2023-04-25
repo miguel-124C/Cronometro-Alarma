@@ -70,28 +70,24 @@
         </div>
     </div>
     <div id="alarma">
-        <div>
-            <div>
-                <div>
-                    <div>
-                        8:56
-                    </div>
-                    <div>
-                        de que va la alarma
-                    </div>
-                </div>
-                <div>
-                    activado o no
-                </div>
-            </div>
+        <div class="list-alarms">
         </div>
-        <button>
+        <button class="btn-addAlarma buttons">
             agregar
         </button>
+        <form class="menu-add-alarm">
+            <input type="time" name=""  class="inputs-alarm time-alarm">
+            <input type="text" placeholder="Motivo" class="inputs-alarm motivo-alarm" autocomplete="off">
+            <input type="submit" value="Guardar alarma" class="inputs-alarm btn-form-alarm">
+        </form>
+        <span class="alarm-message">
+            <div>fasdfasdfsad</div>
+        </span>
     </div>
     <script src="aside.js"></script>
     <script src="cronometro.js"></script>
     <script src="temporizador.js"></script>
     <script src="reloj.js"></script>
+    <script src="alarma.js"></script>
 </body>
 </html>
