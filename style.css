@@ -121,29 +121,71 @@ i{
     position: absolute;
     display: none;
     flex-direction: column;
-    justify-content: space-evenly;
-    width: 300px;
-    height: 200px;
-    background-color: red;
+    gap: 20px;
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+}
+.menu-add-alarm header{
+    display: flex;
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-principal);
+}
+.menu-add-alarm header .fa-circle-check,
+.menu-add-alarm header .fa-circle-xmark{
+    font-size: 3em;
+    color: rgb(1, 1, 1);
+}
+.menu-add-alarm .time-alarm{
+    text-align: center;
+    height: 100px;
+    align-self: center;
+    width: 50%;
 }
 .inputs-alarm{
     margin: 0 10px;
-    height: 40px;
+    border: 2px solid #000;
+    border-radius: 20px;
+    font-size: 3em;
+}
+.menu-add-alarm .motivo-alarm{
+    margin-top: 50px;
+    height: 100px;
 }
 .list-alarms{
-    position: relative;
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 80%;
-    max-height: 500px;
+    height: 70vh;
     overflow-y: auto;
 }
 .alarms-items{
+    position: relative;
     width: 100%;
     height: 100px;
     border: 5px solid var(--color-principal);
+    cursor: pointer;
+}
+.items-alarm{
     font-size: 2em;
+}
+.alarms-items .text-time-alarm{
+    font-size: 3em;
+}
+.input-active-alarm{
+    position: absolute;
+    right: 0;
+}
+.btn-delete-alarm{
+    width: 30%;
+    align-self: center;
+    height: 50px;
+    color: #f00;
+    font-size: 2em;
+    cursor: pointer;
 }
 .alarm-message{
     position: absolute;
