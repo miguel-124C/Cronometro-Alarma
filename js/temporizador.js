@@ -28,7 +28,7 @@ const soloNumbers=(input,rango,number)=>{
 const mostrarTiempo = (tiempo,obj)=>{
     if(tiempo)
         if(tiempo < 10) obj.textContent = "0" + parseInt(tiempo);
-        else obj.textContent = tiempo;
+        else obj.textContent = parseInt(tiempo);
     else         
         obj.textContent = "00";
 }
