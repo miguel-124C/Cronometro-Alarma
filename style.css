@@ -148,6 +148,7 @@ i{
     justify-content: space-between;
     align-items: center;
     background: var(--color-principal);
+    z-index: 200;
 }
 .menu-add-alarm header .fa-circle-check,
 .menu-add-alarm header .fa-circle-xmark{
