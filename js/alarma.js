@@ -31,6 +31,7 @@ const validarForm=()=>{
     return inputTimeAlarm.value.trim()!= "" && inputMotivoAlarm.value.trim() != "";
 }
 const mostrarAlarms=()=>{
+    alarms.sort();
     listAlarms.innerHTML = "";
     for (let i = 0; i < alarms.length; i++) {
         const div = document.createElement("div");
@@ -49,24 +50,20 @@ const mostrarAlarms=()=>{
             <div class="items-alarm">${alarms[i][1]}</div>
         `;
         listAlarms.appendChild(div);   
-        console.log(alarms);
     }
 }
 const editarData=()=>{
     alarms[parseInt(alarmEdit)][0] = inputTimeAlarm.value;
     alarms[parseInt(alarmEdit)][1] = inputMotivoAlarm.value;
-    alarms.sort();
     mostrarAlarms();
 }
 const guardarData=()=>{
     let time = [inputTimeAlarm.value,inputMotivoAlarm.value];
     alarms.push(time);
-    alarms.sort();
     mostrarAlarms();
 }
 const deleteAlarm=()=>{
     alarms.splice(parseInt(alarmEdit),1);
-    alarms.sort();
     mostrarAlarms();
     formAlarm.style.display = "none"; 
 }
@@ -91,7 +88,6 @@ document.querySelector(".btn-add-edit-alarm").addEventListener("click",(e)=>{
             inputMotivoAlarm.value = "Alarma";
             formAlarm.style.display = "none";  
         }
-
     }
 });
 btnExitAlarm.addEventListener("click",()=>{
