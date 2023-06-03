@@ -9,6 +9,7 @@ const inputSegundo = document.querySelector(".disminuir-segundo");
 
 const btnPLayTemporizador = document.querySelector(".temporizador-iniciar");
 const btnRefreshTemporizador = document.querySelector(".temporizador-reiniciar");
+const modelEndTemp = document.querySelector(".model-end-temp");
 /*temporizador funciones*/
 let iniciaroNo = true;
 let limite = 0;
@@ -24,12 +25,12 @@ const soloNumbers=(input,rango,number)=>{
         }
     }
 }
-const mostrarTiempo = (tiempo,objMostrar)=>{
-    if(tiempo < 10){
-        objMostrar.textContent = "0" + tiempo;
-    }else{
-        objMostrar.textContent = tiempo;
-    }
+const mostrarTiempo = (tiempo,obj)=>{
+    if(tiempo)
+        if(tiempo < 10) obj.textContent = "0" + parseInt(tiempo);
+        else obj.textContent = tiempo;
+    else         
+        obj.textContent = "00";
 }
 const disminuir = (limiteFinal)=>{
     intervaloSegundo = setInterval(() => {
@@ -38,11 +39,22 @@ const disminuir = (limiteFinal)=>{
             if(segundoMostrado == -1){
                 segundoMostrado = 59;
                 minutoMostrado--;
+                if(minutoMostrado == -1){
+                    minutoMostrado = 59;
+                    horaMostrada--;
+                    mostrarTiempo(horaMostrada,temporizadorHora);
+                }
                 mostrarTiempo(minutoMostrado,temporizadorMinuto);
             }
             mostrarTiempo(segundoMostrado,temporizadorSegundo);
             limite++;
-        }
+        }else {
+            altPlayPause(["fa-pause","fa-play"],true,false);
+            reiniciarTemporizador();
+            modelEndTemp.style.display = "flex";
+            modelEndTemp.addEventListener("click",()=>modelEndTemp.style.display = "none");
+            clearInterval(intervaloSegundo);                      
+        };
     }, 1000);
 }
 const convertir=(hora,minuto,segundo)=>{
@@ -69,7 +81,7 @@ const iniciarDescuento=()=>{
         if(iniciaroNo){
             setTiempo();
             inputHora.disabled = true;
-            inputMinuto.disabled =true;
+            inputMinuto.disabled = true;
             inputSegundo.disabled = true;
             altPlayPause(["fa-play","fa-pause"],true,false);
             disminuir(limiteFinal);
@@ -79,6 +91,7 @@ const iniciarDescuento=()=>{
         }
 }
 const reiniciarTemporizador=()=>{
+    iniciaroNo = true;
     btnRefreshTemporizador.disabled = true;
     inputHora.disabled = false;
     inputMinuto.disabled =  false;
